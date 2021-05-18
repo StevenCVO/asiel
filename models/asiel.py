@@ -48,15 +48,21 @@ class Asiel:
         else:
             raise ValueError
 
+    @classmethod
+    def from_dict(cls, dict):
+        return cls(dict["naam"],
+                dict["plaats"],
+                dict["dieren"],
+                dict["id"])
 
 
-asiel1 = Asiel("A1", "fskjdf")
-asiel2 = Asiel("A2", "dsttyw")
-asiel3 = Asiel("A2", "dsttyw", [1, 4, 6])
+# asiel1 = Asiel("A1", "fskjdf")
+# asiel2 = Asiel("A2", "dsttyw")
+# asiel3 = Asiel("A2", "dsttyw", [1, 4, 6])
 
-asiel1.dier_toevoegen(4)
-asiel1.dieren.append(6)
+# asiel1.dier_toevoegen(4)
+# asiel1.dieren.append(6)
 
-print(asiel1.dieren)
-print(asiel2.dieren)
+# print(asiel1.dieren)
+# print(asiel2.dieren)
 
