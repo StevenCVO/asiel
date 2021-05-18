@@ -67,9 +67,11 @@ class Dier:
         else:
             raise ValueError
 
-diertje = Dier("Bennie", "Hond", "M")
-# diertje.soort = "Vleermuis"
-print(diertje.id)
-print(diertje.soort)
-diertje.geslacht = "F"
+    @classmethod
+    def from_dict(cls, dict):
+        return cls(dict["naam"],
+                dict["soort"],
+                dict["geslacht"],
+                dict["id"],
+                dict["opname_datum"])
 
