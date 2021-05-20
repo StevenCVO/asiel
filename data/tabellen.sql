@@ -1,0 +1,20 @@
+-- SQLite
+
+DROP TABLE IF EXISTS dieren;
+DROP TABLE IF EXISTS asielen;
+
+CREATE TABLE IF NOT EXISTS asielen (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    naam TEXT NOT NULL,
+    plaats TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dieren (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    naam TEXT NOT NULL,
+    soort TEXT NOT NULL,
+    geslacht TEXT NOT NULL,
+    opname_datum TEXT NOT NULL,
+    asiel_id INTEGER,
+    FOREIGN KEY (asiel_id) REFERENCES asielen (id) ON DELETE CASCADE
+);
