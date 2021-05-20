@@ -13,7 +13,7 @@ class Dier:
         "konijn"
     ]
     
-    def __init__(self, naam, soort, geslacht, id=-1, opname_datum=None):
+    def __init__(self, naam, soort, geslacht, id=-1, opname_datum=None, asiel_id=None):
         # Het Id van het dier is standaard -1. Voor ons betekent dit dat het nog
         # geen Id heeft gekregen van de databank.
         # De opname_datum krijgt de standaardwaarde None om het optioneel te maken
@@ -35,6 +35,7 @@ class Dier:
         # De standaardwaarde voor de opname_datum is None, maar indien het None
         # is wijzen we het huidige moment toe aan het attribuut.
         self.opname_datum = opname_datum or datetime.now()
+        self.asiel_id = asiel_id
 
     # De property id heeft een GETTER die toegang geeft tot de waarde van het attribuut _id
     # Deze property krijgt geen bijhorende SETTER en is dus READ-ONLY:
@@ -69,9 +70,13 @@ class Dier:
 
     @classmethod
     def from_dict(cls, dict):
+        # Als de dictionary de sleutel "asiel_id" bevat dan wordt ze gebruikt,
+        # anders is de waarde voor asiel_id gelijk aan None
+        asiel_id = dict["asiel_id"] if "asiel_id" in dict.keys() else None
         return cls(dict["naam"],
                 dict["soort"],
                 dict["geslacht"],
                 dict["id"],
-                dict["opname_datum"])
+                dict["opname_datum"],
+                asiel_id)
 
