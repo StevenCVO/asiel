@@ -12,6 +12,9 @@ class Asiel:
         self.dieren = dieren if dieren else []
         self._id = id
 
+    def __str__(self):
+        return f"{self.naam} te {self.plaats}"
+
     @property
     def id(self):
         return self._id   

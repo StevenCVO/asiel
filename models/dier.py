@@ -34,7 +34,7 @@ class Dier:
         self._id = id
         # De standaardwaarde voor de opname_datum is None, maar indien het None
         # is wijzen we het huidige moment toe aan het attribuut.
-        self.opname_datum = opname_datum or datetime.now()
+        self.opname_datum = opname_datum or datetime.now().strftime("%Y-%m-%d")
         self.asiel_id = asiel_id
 
     # De property id heeft een GETTER die toegang geeft tot de waarde van het attribuut _id
@@ -79,4 +79,7 @@ class Dier:
                 dict["id"],
                 dict["opname_datum"],
                 asiel_id)
+
+    def __str__(self):
+        return self.naam
 
